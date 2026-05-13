@@ -319,6 +319,61 @@ components:
     padding: "{spacing.5xl} {spacing.3xl}"
     description: "Optional mailing-list sign-up strip. Sits between content and footer. Headline in display-sm (on-cosmos), subline in body-serif-md (on-cosmos-muted), email input + button-primary side by side."
 
+  # ── Vault components ──────────────────────────────────────────────────────────
+  email-gate:
+    backgroundColor: "{colors.canvas}"
+    borderColor: "{colors.hairline}"
+    rounded: "{rounded.md}"
+    padding: "{spacing.4xl}"
+    description: "The email capture form that gates vault access. Centred single-column card on the landing page. Contains: section header in display-md, body copy in body-serif-md, single email text-input, button-primary ('Unlock My Bonus Vault'), privacy assurance line in caption ink-soft. Success state swaps the form for the success message in body-serif-md primary-blue."
+  vault-resource-card:
+    backgroundColor: "{colors.canvas-white}"
+    borderColor: "{colors.hairline}"
+    rounded: "{rounded.md}"
+    padding: "{spacing.3xl}"
+    description: "Container for a single vault resource (audio companion or video overview). Header row: icon (🎧 or 🎬) + resource type in eyebrow + duration in caption ink-soft. Below: the embedded player. Below player: description copy in body-serif-sm ink-mid. Hover state: border brightens to primary."
+  media-player-block:
+    backgroundColor: "{colors.canvas-soft}"
+    rounded: "{rounded.sm}"
+    padding: "{spacing.lg}"
+    description: "The embedded media player area inside vault-resource-card. Aspect ratio 16:9 for video, fixed ~80px height for audio. Background canvas-soft while loading. Player controls inherit from the embed provider (YouTube, Vimeo, or native HTML5 audio)."
+  chapter-grid-item:
+    backgroundColor: "{colors.canvas-white}"
+    borderColor: "{colors.hairline}"
+    hoverBorderColor: "{colors.primary}"
+    hoverBackground: "{colors.canvas-soft}"
+    rounded: "{rounded.md}"
+    padding: "{spacing.lg}"
+    description: "A single tile in the chapter navigation grid on the Dashboard. Displays chapter number in eyebrow, chapter title (when available) in body-md-strong. On hover: border shifts to primary, background to canvas-soft. Active/visited state: eyebrow in primary. Grid is 5-up on desktop, 3-up on tablet, 2-up on mobile."
+  download-card:
+    backgroundColor: "{colors.gold-soft}"
+    borderColor: "{colors.gold}"
+    rounded: "{rounded.md}"
+    padding: "{spacing.2xl}"
+    description: "Bonus download item (PDF guides, etc.). Gold-tinted surface to signal bonus/extra value. Left: document icon + title in body-md-strong + description in body-sm ink-mid. Right: download button (button-outline, not button-primary — the gold surface provides enough signal). Future items render as additional download-cards in a stacked list."
+  collapsible-section:
+    backgroundColor: "{colors.canvas-soft}"
+    borderColor: "{colors.hairline}"
+    rounded: "{rounded.md}"
+    description: "Expandable/collapsible panel. Used for 'How to Use This Vault' on the Dashboard. Header row: section title in body-md-strong + chevron icon (rotates 180° when open). Body: content in body-serif-md. Collapsed by default for returning visitors; expanded by default on first visit. Transition: smooth height animation."
+  book-callout-box:
+    backgroundColor: "#fdf3e0"
+    borderColor: "{colors.gold}"
+    borderLeft: "4px solid {colors.gold}"
+    textColor: "#5c3a1e"
+    rounded: "{rounded.sm}"
+    padding: "{spacing.2xl}"
+    description: "Replicates the 'Get the Most Out of This Chapter' callout graphic from the physical book. Warm gold/cream palette with brown text — David's specified book aesthetic. Used in the 'How to Use This Vault' section to show readers what the in-book callout looks like. This is the one surface that intentionally departs from the main palette to match the printed book."
+  vault-nav-header:
+    backgroundColor: "{colors.canvas}"
+    borderBottom: "1px solid {colors.hairline}"
+    padding: "{spacing.md} {spacing.3xl}"
+    description: "Simplified header for vault interior pages (Dashboard and Chapter pages). Logo left, 'Back to Dashboard' link right (body-sm-strong, primary color). Leaner than the main site nav — vault visitors don't need the full marketing nav."
+  chapter-pagination:
+    textColor: "{colors.primary}"
+    typography: "{typography.body-sm-strong}"
+    description: "Prev/Next chapter navigation row at the bottom of each chapter page. '← Chapter 2' left-aligned, 'Chapter 4 →' right-aligned. Separated by a hairline-divider above. Links in primary blue. Chapter title shown on desktop, chapter number only on mobile."
+
   # ── Example surfaces (illustrative) ─────────────────────────────────────────
   ex-pricing-tier:
     backgroundColor: "{colors.canvas-soft}"
