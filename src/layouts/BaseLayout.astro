@@ -1,8 +1,6 @@
 ---
-/*
-  BaseLayout — wraps every page on the main marketing site.
-  Injects Google Fonts, global styles, site nav, and footer.
-*/
+import '../styles/global.css';
+
 interface Props {
   title: string;
   description?: string;
@@ -43,7 +41,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin)
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
 
   <body class="bg-canvas text-ink">
