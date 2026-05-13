@@ -4,6 +4,21 @@
 
 ---
 
+## 2026-05-13 — Bonus Vault confirmed as in-scope for Phase 1
+
+**Decision:** The Bonus Vault (`/vault/`) is part of the Phase 1 build, not a Phase 2 addition. David has provided full copy and structure brief.
+
+**Reasoning:** The QR codes in the physical book already link to vault URLs. If the vault isn't live at launch, those QR codes go nowhere — making the vault a launch blocker, not a nice-to-have. The static marketing site and the vault ship together.
+
+**Implications:**
+- The site needs email capture, session/cookie auth for returning visitors, embedded media players, and PDF downloads — not purely static.
+- Astro SSR mode or Cloudflare Workers will likely be needed for the session/gate logic.
+- Provider decisions (email service, audio hosting, video hosting, analytics) are open and must be resolved before launch.
+
+**Made by:** Grant + Claude (inferred from David's content documents)
+
+---
+
 ## 2026-05-08 — Migrating from Joomla 6 to Astro
 
 **Decision:** Rebuild the site on Astro, replacing the existing Joomla 6 implementation.

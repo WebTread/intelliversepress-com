@@ -49,6 +49,16 @@ Author / small-publisher site. Probable structure: home, about (author + imprint
 - Existing book page: https://intelliversepress.com/books/ai-fundamentals
 - Wireframe from David — to be added to `reference/wireframes/`
 
+## Bonus Vault (confirmed scope addition)
+
+A gated resource hub at `/vault/` is a confirmed part of the build. Readers arrive via QR codes in the physical book and unlock audio companions, video overviews, and PDFs by providing their email address. Full structure in [`context/vault-structure.md`](./vault-structure.md). Copy in [`content/vault/landing-copy.md`](../content/vault/landing-copy.md).
+
+Key vault pages: Landing (pre-signup gate) · Dashboard (post-signup home) · 14 Chapter pages.
+
+Functional requirements beyond a static site: email capture + list integration, embedded audio/video players, cookie/session auth for returning visitors, PDF downloads, analytics. Provider decisions are open — see `vault-structure.md`.
+
+---
+
 ## Open questions (to ask David when content arrives)
 
 1. Single-book site for now, or multi-book imprint from day one?
