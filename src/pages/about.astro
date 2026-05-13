@@ -1,0 +1,46 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+/*
+  About page — /about
+  TODO: Replace placeholder content with David's full bio and Intelliverse Press imprint description.
+*/
+---
+
+<BaseLayout title="About" description="About David Preston, author of AI Fundamentals, and the IntelliversePress imprint.">
+
+  <!-- Page hero -->
+  <section class="bg-canvas border-b border-hairline">
+    <div class="mx-auto max-w-4xl px-8 py-16">
+      <p class="font-sans text-xs font-bold uppercase tracking-widest text-ink-soft mb-4">About</p>
+      <h1 class="font-display text-5xl text-ink">David Preston</h1>
+    </div>
+  </section>
+
+  <!-- Author bio -->
+  <section class="bg-canvas-soft">
+    <div class="mx-auto max-w-4xl px-8 py-16 flex flex-col md:flex-row gap-12">
+      <!-- Photo -->
+      <div class="w-36 h-36 flex-shrink-0 rounded-full bg-hairline flex items-center justify-center self-start">
+        <span class="font-sans text-xs text-ink-soft">Photo</span>
+      </div>
+      <div class="prose">
+        <!-- TODO: David to provide full author bio -->
+        <p>Placeholder full author bio. David Preston is an author and educator specialising in artificial intelligence for general audiences.</p>
+        <p>He writes with the belief that anyone can understand how AI works — and that understanding it matters.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Imprint section -->
+  <section class="bg-canvas">
+    <div class="mx-auto max-w-4xl px-8 py-16 border-t border-hairline">
+      <p class="font-sans text-xs font-bold uppercase tracking-widest text-ink-soft mb-4">The Imprint</p>
+      <h2 class="font-display text-3xl text-ink mb-6">IntelliversePress</h2>
+      <div class="prose max-w-prose">
+        <!-- TODO: David to provide imprint description -->
+        <p>IntelliversePress is an independent publishing imprint dedicated to making emerging technology understandable for curious, non-specialist readers.</p>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

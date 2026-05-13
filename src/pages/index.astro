@@ -1,0 +1,62 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+/*
+  Home page — /
+  TODO: Replace placeholder content with David's copy and real assets.
+  Key sections per brief: hero (book + headline), about the author, buy links.
+*/
+---
+
+<BaseLayout title="Home" description="IntelliversePress — publisher of AI Fundamentals by David Preston.">
+
+  <!-- Hero: cosmos-dark band with book cover + headline -->
+  <section class="bg-cosmos text-on-cosmos">
+    <div class="mx-auto max-w-6xl px-8 py-24 flex flex-col md:flex-row items-center gap-16">
+      <!-- Book cover placeholder -->
+      <div class="w-64 flex-shrink-0 bg-cosmos-mid rounded-sm aspect-[2/3] flex items-center justify-center">
+        <p class="font-sans text-xs text-on-cosmos-muted text-center px-4">Book cover<br/>coming soon</p>
+      </div>
+      <!-- Headline + CTA -->
+      <div class="flex-1">
+        <p class="font-sans text-xs font-bold uppercase tracking-widest text-on-cosmos-muted mb-4">New Release</p>
+        <h1 class="font-display text-5xl md:text-6xl text-on-cosmos mb-6 leading-tight">
+          AI Fundamentals
+        </h1>
+        <p class="font-serif text-lg text-on-cosmos mb-8 max-w-prose leading-relaxed">
+          <!-- TODO: David to provide tagline / hero description -->
+          A clear, accessible guide to how artificial intelligence actually works — written for curious minds, not computer scientists.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/books/ai-fundamentals" class="bg-primary text-on-primary font-sans text-sm font-semibold px-6 py-3 rounded-sm hover:bg-primary-deep transition-colors no-underline">
+            View the Book
+          </a>
+          <a href="/vault" class="border border-on-cosmos-muted text-on-cosmos font-sans text-sm font-semibold px-6 py-3 rounded-sm hover:bg-cosmos-mid transition-colors no-underline">
+            Bonus Vault
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About the author teaser -->
+  <section class="bg-canvas-soft">
+    <div class="mx-auto max-w-6xl px-8 py-24 flex flex-col md:flex-row items-center gap-16">
+      <!-- Author photo placeholder -->
+      <div class="w-32 h-32 flex-shrink-0 rounded-full bg-hairline flex items-center justify-center">
+        <span class="font-sans text-xs text-ink-soft">Photo</span>
+      </div>
+      <div>
+        <p class="font-sans text-xs font-bold uppercase tracking-widest text-ink-soft mb-3">About the Author</p>
+        <h2 class="font-display text-3xl text-ink mb-4">David Preston</h2>
+        <p class="font-serif text-base text-ink-mid leading-relaxed max-w-prose">
+          <!-- TODO: David to provide author bio -->
+          Placeholder author bio. David Preston writes about artificial intelligence for general readers, making complex concepts approachable without sacrificing accuracy.
+        </p>
+        <a href="/about" class="inline-block mt-6 font-sans text-sm font-semibold text-primary no-underline hover:text-primary-deep">
+          Read full bio →
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

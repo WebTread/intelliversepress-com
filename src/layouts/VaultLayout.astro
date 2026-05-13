@@ -1,0 +1,76 @@
+---
+/*
+  VaultLayout — wraps all Bonus Vault pages (/vault/*).
+  Leaner than BaseLayout: no full marketing nav, just logo + back-to-dashboard link.
+  Uses the same Google Fonts and global styles.
+
+  NOTE: When the email gate is implemented, this layout will check for a valid
+  session cookie and redirect unauthenticated visitors to /vault/ (the gate page).
+  That requires `export const prerender = false` on the consuming page.
+*/
+interface Props {
+  title: string;
+  description?: string;
+  showBackLink?: boolean;
+}
+
+const {
+  title,
+  description = 'AI Fundamentals Bonus Vault — your supplementary learning resources.',
+  showBackLink = true,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" /><!-- Vault pages are gated; don't index -->
+
+    <title>{title} — AI Fundamentals Bonus Vault</title>
+    <meta name="description" content={description} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;1,400&family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+
+  <body class="bg-canvas text-ink">
+    <!-- Vault nav header -->
+    <header class="border-b border-hairline bg-canvas">
+      <nav class="mx-auto max-w-4xl px-8 py-4 flex items-center justify-between">
+        <a href="/" class="font-display text-lg text-ink no-underline hover:text-primary">
+          IntelliversePress
+        </a>
+        {showBackLink && (
+          <a href="/vault/dashboard" class="font-sans text-sm font-semibold text-primary no-underline hover:text-primary-deep">
+            ← Back to Dashboard
+          </a>
+        )}
+      </nav>
+    </header>
+
+    <main class="mx-auto max-w-4xl px-8 py-12">
+      <slot />
+    </main>
+
+    <footer class="border-t border-hairline mt-16">
+      <div class="mx-auto max-w-4xl px-8 py-8">
+        <p class="font-sans text-xs text-ink-soft text-center">
+          <!-- TODO: replace with David's support email -->
+          Questions or feedback? <a href="mailto:hello@intelliversepress.com">hello@intelliversepress.com</a>
+          &nbsp;·&nbsp;
+          &copy; {new Date().getFullYear()} IntelliversePress
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+---
+/*
+  BaseLayout — wraps every page on the main marketing site.
+  Injects Google Fonts, global styles, site nav, and footer.
+*/
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description = 'IntelliversePress — publisher of AI Fundamentals by David Preston.',
+  ogImage = '/og-default.png',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <title>{title} — IntelliversePress</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={`${title} — IntelliversePress`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Google Fonts: Playfair Display (display) + Lora (serif body) + Inter (UI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;1,400&family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+
+  <body class="bg-canvas text-ink">
+    <!-- Site nav -->
+    <header class="border-b border-hairline bg-canvas">
+      <nav class="mx-auto max-w-6xl px-8 py-4 flex items-center justify-between">
+        <a href="/" class="font-display text-xl text-ink no-underline hover:text-primary">
+          IntelliversePress
+        </a>
+        <ul class="flex items-center gap-6 list-none m-0 p-0">
+          <li><a href="/books/ai-fundamentals" class="font-sans text-sm font-semibold text-ink-mid no-underline hover:text-ink">Books</a></li>
+          <li><a href="/about" class="font-sans text-sm font-semibold text-ink-mid no-underline hover:text-ink">About</a></li>
+          <li>
+            <a href="/books/ai-fundamentals" class="bg-primary text-on-primary font-sans text-sm font-semibold px-5 py-2.5 rounded-sm no-underline hover:bg-primary-deep transition-colors">
+              Get the Book
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Page content -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-cosmos text-on-cosmos mt-24">
+      <div class="mx-auto max-w-6xl px-8 py-16 grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div>
+          <p class="font-display text-lg text-on-cosmos mb-2">IntelliversePress</p>
+          <p class="font-sans text-sm text-on-cosmos-muted">
+            Independent publisher of accessible technical books.
+          </p>
+        </div>
+        <div>
+          <p class="font-sans text-xs font-bold uppercase tracking-widest text-on-cosmos-muted mb-4">Books</p>
+          <ul class="list-none m-0 p-0 space-y-2">
+            <li><a href="/books/ai-fundamentals" class="font-sans text-sm text-on-cosmos no-underline hover:text-primary">AI Fundamentals</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-sans text-xs font-bold uppercase tracking-widest text-on-cosmos-muted mb-4">Contact</p>
+          <p class="font-sans text-sm text-on-cosmos-muted">
+            <!-- TODO: replace with David's support email -->
+            hello@intelliversepress.com
+          </p>
+        </div>
+      </div>
+      <div class="border-t border-cosmos-mid">
+        <p class="mx-auto max-w-6xl px-8 py-6 font-sans text-xs text-on-cosmos-muted">
+          &copy; {new Date().getFullYear()} IntelliversePress. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

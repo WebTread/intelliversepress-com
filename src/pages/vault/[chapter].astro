@@ -1,0 +1,113 @@
+---
+/*
+  Dynamic chapter page — /vault/intro/, /vault/chapter-1/, etc.
+  One page handles all 14 chapter URLs via the [chapter] param.
+
+  CURRENT STATE: Static. All 14 pages pre-rendered at build time from the chapters array.
+
+  TODO (when content is available):
+  - Replace chapters array with a proper Astro content collection in src/content/vault/
+  - Add real audio and video embeds
+  - Add chapter titles once David provides them
+*/
+import VaultLayout from '@layouts/VaultLayout.astro';
+
+// Defines all valid chapter slugs — Astro uses this for static path generation.
+export function getStaticPaths() {
+  const chapters = [
+    { slug: 'intro',       label: 'Introduction',  prev: null,        next: 'chapter-1'  },
+    { slug: 'chapter-1',   label: 'Chapter 1',     prev: 'intro',     next: 'chapter-2'  },
+    { slug: 'chapter-2',   label: 'Chapter 2',     prev: 'chapter-1', next: 'chapter-3'  },
+    { slug: 'chapter-3',   label: 'Chapter 3',     prev: 'chapter-2', next: 'chapter-4'  },
+    { slug: 'chapter-4',   label: 'Chapter 4',     prev: 'chapter-3', next: 'chapter-5'  },
+    { slug: 'chapter-5',   label: 'Chapter 5',     prev: 'chapter-4', next: 'chapter-6'  },
+    { slug: 'chapter-6',   label: 'Chapter 6',     prev: 'chapter-5', next: 'chapter-7'  },
+    { slug: 'chapter-7',   label: 'Chapter 7',     prev: 'chapter-6', next: 'chapter-8'  },
+    { slug: 'chapter-8',   label: 'Chapter 8',     prev: 'chapter-7', next: 'chapter-9'  },
+    { slug: 'chapter-9',   label: 'Chapter 9',     prev: 'chapter-8', next: 'chapter-10' },
+    { slug: 'chapter-10',  label: 'Chapter 10',    prev: 'chapter-9', next: 'chapter-11' },
+    { slug: 'chapter-11',  label: 'Chapter 11',    prev: 'chapter-10',next: 'chapter-12' },
+    { slug: 'chapter-12',  label: 'Chapter 12',    prev: 'chapter-11',next: 'chapter-13' },
+    { slug: 'chapter-13',  label: 'Chapter 13',    prev: 'chapter-12',next: null         },
+  ];
+
+  return chapters.map(ch => ({
+    params: { chapter: ch.slug },
+    props: ch,
+  }));
+}
+
+const { slug, label, prev, next } = Astro.props;
+---
+
+<VaultLayout title={`${label} Resources`}>
+
+  <!-- Chapter header -->
+  <div class="mb-10">
+    <p class="font-sans text-xs font-bold uppercase tracking-widest text-ink-soft mb-3">AI Fundamentals</p>
+    <h1 class="font-display text-4xl text-ink mb-2">{label} Resources</h1>
+    <!-- TODO: replace with real chapter title once David provides it -->
+    <p class="font-serif text-base text-ink-mid">
+      Here's everything we've created to support your learning in this chapter.
+      Start anywhere—there's no required order.
+    </p>
+  </div>
+
+  <!-- Audio companion -->
+  <div class="bg-canvas-white border border-hairline rounded-md p-6 mb-6 hover:border-primary transition-colors">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="text-2xl">🎧</span>
+      <div>
+        <p class="font-sans text-xs font-bold uppercase tracking-widest text-ink-soft">Audio Companion</p>
+        <p class="font-sans text-sm font-semibold text-ink">{label}</p>
+      </div>
+    </div>
+    <!-- TODO: Replace with real audio embed for this chapter -->
+    <div class="bg-canvas-soft rounded-sm h-16 flex items-center justify-center mb-3">
+      <p class="font-sans text-xs text-ink-soft">Audio player coming soon</p>
+    </div>
+    <p class="font-serif text-sm text-ink-mid">
+      Prefer to listen? This companion walks you through the key concepts from this chapter—
+      perfect for reinforcing what you've read.
+    </p>
+  </div>
+
+  <!-- Video overview -->
+  <div class="bg-canvas-white border border-hairline rounded-md p-6 mb-12 hover:border-primary transition-colors">
+    <div class="flex items-center gap-3 mb-4">
+      <span class="text-2xl">🎬</span>
+      <div>
+        <p class="font-sans text-xs font-bold uppercase tracking-widest text-ink-soft">Video Overview</p>
+        <p class="font-sans text-sm font-semibold text-ink">{label}</p>
+      </div>
+    </div>
+    <!-- TODO: Replace with real video embed (YouTube unlisted / Vimeo) for this chapter -->
+    <div class="bg-canvas-soft rounded-sm aspect-video flex items-center justify-center mb-3">
+      <p class="font-sans text-xs text-ink-soft">Video player coming soon</p>
+    </div>
+    <p class="font-serif text-sm text-ink-mid">
+      Sometimes seeing is believing. Watch at your own pace and replay as often as you like.
+    </p>
+  </div>
+
+  <!-- Chapter pagination -->
+  <div class="border-t border-hairline pt-8 flex items-center justify-between">
+    {prev ? (
+      <a href={`/vault/${prev}`} class="font-sans text-sm font-semibold text-primary no-underline hover:text-primary-deep">
+        ← {prev === 'intro' ? 'Introduction' : prev.replace('chapter-', 'Chapter ')}
+      </a>
+    ) : (
+      <a href="/vault/dashboard" class="font-sans text-sm font-semibold text-ink-soft no-underline hover:text-ink">
+        ← Dashboard
+      </a>
+    )}
+    {next ? (
+      <a href={`/vault/${next}`} class="font-sans text-sm font-semibold text-primary no-underline hover:text-primary-deep">
+        {next.replace('chapter-', 'Chapter ')} →
+      </a>
+    ) : (
+      <span class="font-sans text-sm text-ink-soft">End of vault</span>
+    )}
+  </div>
+
+</VaultLayout>

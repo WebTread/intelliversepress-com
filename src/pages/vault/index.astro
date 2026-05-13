@@ -1,0 +1,70 @@
+---
+/*
+  Vault landing page — /vault/
+  The email gate. Unauthenticated visitors see this page and enter their email to unlock the vault.
+
+  CURRENT STATE: Static placeholder. Copy is from content/vault/landing-copy.md.
+
+  TODO (when email provider is chosen):
+  - Add `export const prerender = false` to enable SSR
+  - Wire email form to provider (ConvertKit / Kit / Mailchimp)
+  - On successful submission: set session cookie, redirect to /vault/dashboard
+  - On return visit with valid cookie: redirect straight to /vault/dashboard
+*/
+import VaultLayout from '@layouts/VaultLayout.astro';
+---
+
+<VaultLayout title="Bonus Vault" showBackLink={false}>
+
+  <div class="max-w-xl mx-auto text-center py-8">
+
+    <!-- Headline + subtitle — copy from landing-copy.md §1 -->
+    <h1 class="font-display text-4xl md:text-5xl text-ink mb-4 leading-tight">
+      Welcome to Your AI Fundamentals Bonus Vault
+    </h1>
+    <p class="font-serif text-lg text-ink-mid mb-10 leading-relaxed">
+      First time using a QR code from a book? You're in the right place.
+      We'll walk you through everything.
+    </p>
+
+    <!-- Introduction — copy from landing-copy.md §2 -->
+    <div class="prose text-left mb-12 bg-canvas-soft rounded-md p-8">
+      <p>You're here because you want to get more from your learning journey—and we built this vault specifically for readers like you.</p>
+      <p>If you're feeling a little unsure about what comes next, that's completely normal. You've already done the hardest part: you showed up. Everything from here is designed to be simple, clear, and at your own pace.</p>
+      <p>Inside, you'll find audio companions and video overviews for the entire book, plus dedicated resources for each individual chapter.</p>
+      <p class="!mb-0">Everything here is included with your book. No upsells, no surprises—just the extra support you deserve.</p>
+    </div>
+
+    <!-- Email gate form — copy from landing-copy.md §3 -->
+    <div class="bg-canvas-white border border-hairline rounded-md p-8">
+      <h2 class="font-display text-2xl text-ink mb-3">Enter Your Email to Unlock the Vault</h2>
+      <p class="font-serif text-sm text-ink-mid mb-6 leading-relaxed">
+        We'll let you know when we add new resources, and share future books in the series when they're ready.
+        Your email stays with Intelliverse Press — never sold or shared. Unsubscribe anytime.
+      </p>
+
+      <!-- TODO: replace action with real email provider endpoint -->
+      <form class="flex flex-col sm:flex-row gap-3" action="#" method="POST">
+        <input
+          type="email"
+          name="email"
+          placeholder="you@example.com"
+          required
+          class="flex-1 border border-hairline-strong rounded-sm px-4 py-3 font-sans text-base text-ink bg-canvas focus:outline-none focus:border-primary"
+        />
+        <button
+          type="submit"
+          class="bg-primary text-on-primary font-sans text-sm font-semibold px-6 py-3 rounded-sm hover:bg-primary-deep transition-colors whitespace-nowrap"
+        >
+          Unlock My Bonus Vault
+        </button>
+      </form>
+
+      <p class="font-sans text-xs text-ink-soft mt-4">
+        We will never sell or share your email address.
+      </p>
+    </div>
+
+  </div>
+
+</VaultLayout>

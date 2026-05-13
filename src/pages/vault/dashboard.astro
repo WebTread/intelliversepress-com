@@ -1,0 +1,141 @@
+---
+/*
+  Vault dashboard — /vault/dashboard/
+  Post-signup home: book-level resources + chapter grid + bonus downloads.
+
+  CURRENT STATE: Static placeholder with all sections stubbed.
+
+  TODO (when email provider + media hosting are chosen):
+  - Add `export const prerender = false`
+  - Check session cookie; redirect to /vault/ if not authenticated
+  - Replace placeholder audio/video players with real embeds
+  - Populate chapter grid with real titles once David provides them
+  - Add real PDF download link for 100 Prompts Guide
+*/
+import VaultLayout from '@layouts/VaultLayout.astro';
+
+// TODO: replace with real chapter data from a content collection
+const chapters = [
+  { slug: 'intro', label: 'Introduction' },
+  { slug: 'chapter-1', label: 'Chapter 1' },
+  { slug: 'chapter-2', label: 'Chapter 2' },
+  { slug: 'chapter-3', label: 'Chapter 3' },
+  { slug: 'chapter-4', label: 'Chapter 4' },
+  { slug: 'chapter-5', label: 'Chapter 5' },
+  { slug: 'chapter-6', label: 'Chapter 6' },
+  { slug: 'chapter-7', label: 'Chapter 7' },
+  { slug: 'chapter-8', label: 'Chapter 8' },
+  { slug: 'chapter-9', label: 'Chapter 9' },
+  { slug: 'chapter-10', label: 'Chapter 10' },
+  { slug: 'chapter-11', label: 'Chapter 11' },
+  { slug: 'chapter-12', label: 'Chapter 12' },
+  { slug: 'chapter-13', label: 'Chapter 13' },
+];
+---
+
+<VaultLayout title="Dashboard" showBackLink={false}>
+
+  <!-- Welcome message -->
+  <div class="mb-10">
+    <h1 class="font-display text-4xl text-ink mb-2">Your Vault is Unlocked</h1>
+    <p class="font-serif text-base text-ink-mid">
+      Here's everything we've created to support your learning. Start anywhere—there's no required order.
+    </p>
+  </div>
+
+  <!-- How to Use (collapsible) — copy from landing-copy.md §4 -->
+  <details class="bg-canvas-soft border border-hairline rounded-md mb-10 group">
+    <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-sans text-base font-semibold text-ink list-none">
+      New here? Here's how this works.
+      <span class="text-ink-soft group-open:rotate-180 transition-transform">▾</span>
+    </summary>
+    <div class="px-6 pb-6 prose">
+      <p>Before diving into specific chapters, explore the vault a bit. Try an audio companion or watch a video overview. Once you know what's here, you'll feel more confident returning as you progress through the book.</p>
+      <!-- TODO: Insert callout graphic image here (assets/images/callout-graphic.png) -->
+      <div class="bg-gold-soft border-l-4 border-gold rounded-sm p-6 my-4 not-prose">
+        <p class="font-sans text-xs font-bold uppercase tracking-widest text-gold mb-2">Callout graphic placeholder</p>
+        <p class="font-serif text-sm" style="color: #5c3a1e;">Insert the "Get the Most Out of This Chapter" image from the book here.</p>
+      </div>
+      <p>Our suggestion: let the vault warm you up, let the book go deep, and let the vault help it stick. Take your time—there's no rush, no expiration, and no limit on how many times you can access these resources.</p>
+    </div>
+  </details>
+
+  <!-- Full-book resources -->
+  <section class="mb-12">
+    <h2 class="font-sans text-xs font-bold uppercase tracking-widest text-ink-soft mb-6">Full-Book Resources</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+      <!-- Audio companion -->
+      <div class="bg-canvas-white border border-hairline rounded-md p-6 hover:border-primary transition-colors">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-2xl">🎧</span>
+          <div>
+            <p class="font-sans text-xs font-bold uppercase tracking-widest text-ink-soft">Audio Companion</p>
+            <p class="font-sans text-sm font-semibold text-ink">Complete Book</p>
+          </div>
+        </div>
+        <!-- TODO: Replace with real audio embed -->
+        <div class="bg-canvas-soft rounded-sm h-16 flex items-center justify-center mb-3">
+          <p class="font-sans text-xs text-ink-soft">Audio player coming soon</p>
+        </div>
+        <p class="font-serif text-xs text-ink-mid">A focused summary of the entire book — perfect for commutes or reviewing before bed.</p>
+      </div>
+
+      <!-- Video overview -->
+      <div class="bg-canvas-white border border-hairline rounded-md p-6 hover:border-primary transition-colors">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-2xl">🎬</span>
+          <div>
+            <p class="font-sans text-xs font-bold uppercase tracking-widest text-ink-soft">Video Overview</p>
+            <p class="font-sans text-sm font-semibold text-ink">Complete Book</p>
+          </div>
+        </div>
+        <!-- TODO: Replace with real video embed (YouTube unlisted / Vimeo) -->
+        <div class="bg-canvas-soft rounded-sm aspect-video flex items-center justify-center mb-3">
+          <p class="font-sans text-xs text-ink-soft">Video player coming soon</p>
+        </div>
+        <p class="font-serif text-xs text-ink-mid">Visual guides that demonstrate concepts easier to show than describe.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Chapter grid -->
+  <section class="mb-12">
+    <h2 class="font-sans text-xs font-bold uppercase tracking-widest text-ink-soft mb-6">Select Your Chapter</h2>
+    <p class="font-serif text-sm text-ink-mid mb-6">Click any chapter below to access its bonus materials.</p>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+      {chapters.map(ch => (
+        <a
+          href={`/vault/${ch.slug}`}
+          class="bg-canvas-white border border-hairline rounded-md p-4 text-center no-underline hover:border-primary hover:bg-canvas-soft transition-colors group"
+        >
+          <p class="font-sans text-xs font-bold uppercase tracking-widest text-ink-soft mb-1 group-hover:text-primary">
+            {ch.slug === 'intro' ? 'Intro' : ch.slug.replace('chapter-', 'Ch. ')}
+          </p>
+          <p class="font-sans text-xs text-ink-mid leading-snug">
+            {/* TODO: replace with real chapter title */}
+            {ch.label}
+          </p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- Bonus downloads -->
+  <section>
+    <h2 class="font-sans text-xs font-bold uppercase tracking-widest text-ink-soft mb-6">Bonus Downloads</h2>
+    <div class="bg-gold-soft border border-gold rounded-md p-6 flex items-center justify-between gap-4">
+      <div>
+        <p class="font-sans text-xs font-bold uppercase tracking-widest text-gold mb-1">PDF Guide</p>
+        <p class="font-sans text-base font-semibold text-ink">100 AI Prompts Guide</p>
+        <p class="font-serif text-sm text-ink-mid mt-1">Ready-to-use prompts organised by topic and skill level.</p>
+      </div>
+      <!-- TODO: Replace # with real PDF URL once David provides the file -->
+      <a href="#" class="border border-hairline-strong text-ink font-sans text-sm font-semibold px-5 py-2.5 rounded-sm no-underline hover:border-primary hover:text-primary transition-colors whitespace-nowrap">
+        Download
+      </a>
+    </div>
+  </section>
+
+</VaultLayout>

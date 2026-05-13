@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+/*
+  Design tokens — sourced from design/DESIGN.md.
+  In Tailwind v4, @theme replaces tailwind.config.js.
+  These become utility classes: bg-primary, text-ink, font-display, etc.
+*/
+@theme {
+  /* ── Brand accent ─────────────────────────────────────────────── */
+  --color-primary:          #2d6be4;
+  --color-primary-deep:     #1e4db8;
+  --color-on-primary:       #ffffff;
+
+  /* ── Depth palette ────────────────────────────────────────────── */
+  --color-cosmos:           #0d1b2a;
+  --color-cosmos-mid:       #1a2f45;
+  --color-on-cosmos:        #e8edf2;
+  --color-on-cosmos-muted:  #7a9ab5;
+
+  /* ── Canvas surfaces ──────────────────────────────────────────── */
+  --color-canvas:           #faf9f6;
+  --color-canvas-soft:      #f0ede6;
+  --color-canvas-white:     #ffffff;
+
+  /* ── Text ─────────────────────────────────────────────────────── */
+  --color-ink:              #0d1b2a;
+  --color-ink-mid:          #3a4e60;
+  --color-ink-soft:         #6b7f8f;
+
+  /* ── Editorial accent ─────────────────────────────────────────── */
+  --color-gold:             #c8881a;
+  --color-gold-soft:        #fdf3e0;
+
+  /* ── Structure ────────────────────────────────────────────────── */
+  --color-hairline:         #ddd9d1;
+  --color-hairline-strong:  #bfb9ae;
+
+  /* ── Semantic ─────────────────────────────────────────────────── */
+  --color-success:          #1d7a4a;
+  --color-error:            #c0392b;
+
+  /* ── Typography ───────────────────────────────────────────────── */
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-serif:   "Lora", Georgia, serif;
+  --font-sans:    "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  /* ── Border radius ────────────────────────────────────────────── */
+  --radius-none: 0px;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-full: 9999px;
+}
+
+/* ── Base styles ────────────────────────────────────────────────── */
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background-color: var(--color-canvas);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  /* Prose content (book descriptions, author bio, vault copy) */
+  .prose {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-ink);
+  }
+
+  .prose p + p {
+    margin-top: 1.25em;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  a:hover {
+    color: var(--color-primary-deep);
+  }
+}

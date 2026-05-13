@@ -1,0 +1,100 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+/*
+  Book detail page — /books/ai-fundamentals
+  This is the primary commercial surface: cover + description + buy links.
+  TODO: Replace all placeholders with David's content once received.
+  TODO: Add real retailer URLs when David confirms which stores.
+*/
+
+const retailers = [
+  { name: 'Amazon', format: 'Paperback', url: '#' },
+  { name: 'Amazon', format: 'Kindle', url: '#' },
+  { name: 'Apple Books', format: 'eBook', url: '#' },
+  // TODO: Add Kobo, Audible, etc. once David confirms
+];
+---
+
+<BaseLayout
+  title="AI Fundamentals"
+  description="A clear, accessible guide to how artificial intelligence actually works — written for curious minds, not computer scientists."
+>
+
+  <!-- Book hero: cosmos-dark with cover + title -->
+  <section class="bg-cosmos text-on-cosmos">
+    <div class="mx-auto max-w-6xl px-8 py-24 flex flex-col md:flex-row gap-16 items-start">
+
+      <!-- Cover -->
+      <div class="w-72 flex-shrink-0">
+        <div class="bg-cosmos-mid rounded-sm aspect-[2/3] flex items-center justify-center border border-cosmos-mid">
+          <p class="font-sans text-xs text-on-cosmos-muted text-center px-4">Book cover<br/>coming soon</p>
+        </div>
+      </div>
+
+      <!-- Title + description + buy -->
+      <div class="flex-1 pt-2">
+        <p class="font-sans text-xs font-bold uppercase tracking-widest text-on-cosmos-muted mb-4">
+          IntelliversePress · 2025
+        </p>
+        <h1 class="font-display text-5xl text-on-cosmos mb-6 leading-tight">AI Fundamentals</h1>
+        <p class="font-sans text-sm font-semibold text-on-cosmos-muted mb-1">by David Preston</p>
+
+        <div class="mt-8 font-serif text-lg text-on-cosmos leading-relaxed max-w-prose">
+          <!-- TODO: David to provide book description -->
+          <p>Placeholder book description. This will be replaced with the full book blurb once David provides it.</p>
+        </div>
+
+        <!-- Format badges -->
+        <div class="flex flex-wrap gap-2 mt-8">
+          {['Paperback', 'eBook', 'Audiobook'].map(fmt => (
+            <span class="bg-cosmos-mid text-on-cosmos-muted font-sans text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
+              {fmt}
+            </span>
+          ))}
+        </div>
+
+        <!-- Retailer buttons -->
+        <div class="flex flex-wrap gap-3 mt-6">
+          {retailers.map(r => (
+            <a
+              href={r.url}
+              class="bg-canvas-white text-ink border border-hairline font-sans text-sm font-semibold px-4 py-2.5 rounded-sm no-underline hover:border-primary hover:text-primary transition-colors"
+            >
+              <span class="block">{r.name}</span>
+              <span class="block font-sans text-xs font-bold uppercase tracking-wider text-ink-soft">{r.format}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter teaser / excerpt placeholder -->
+  <section class="bg-canvas-soft">
+    <div class="mx-auto max-w-4xl px-8 py-16">
+      <p class="font-sans text-xs font-bold uppercase tracking-widest text-ink-soft mb-8">From the Book</p>
+      <blockquote class="border-l-4 border-primary bg-canvas-soft pl-6 py-4">
+        <p class="font-serif text-lg text-ink leading-relaxed italic">
+          <!-- TODO: Add a short excerpt from the book -->
+          "Placeholder excerpt. Replace with a compelling passage from AI Fundamentals."
+        </p>
+        <footer class="mt-4 font-sans text-xs text-ink-soft">Chapter 1</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Bonus Vault CTA -->
+  <section class="bg-canvas">
+    <div class="mx-auto max-w-4xl px-8 py-16 border-t border-hairline text-center">
+      <p class="font-sans text-xs font-bold uppercase tracking-widest text-ink-soft mb-4">Already have the book?</p>
+      <h2 class="font-display text-3xl text-ink mb-4">Access Your Bonus Vault</h2>
+      <p class="font-serif text-base text-ink-mid max-w-prose mx-auto mb-8">
+        Audio companions, video overviews, and supplementary resources for every chapter — free with your book.
+      </p>
+      <a href="/vault" class="bg-primary text-on-primary font-sans text-sm font-semibold px-8 py-3 rounded-sm no-underline hover:bg-primary-deep transition-colors">
+        Go to Bonus Vault
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>
