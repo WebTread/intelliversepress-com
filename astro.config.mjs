@@ -1,10 +1,15 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import cloudflare from '@astrojs/cloudflare';
+
+// Cloudflare adapter is only loaded during `astro build` (production).
+// Skipped in dev to avoid Workers runtime conflicts with the local server.
+const adapter = process.env.NODE_ENV === 'production'
+  ? (await import('@astrojs/cloudflare')).default()
+  : undefined;
 
 export default defineConfig({
   site: 'https://intelliversepress.com',
-  adapter: cloudflare(),
+  adapter,
   vite: {
     plugins: [tailwindcss()],
   },
