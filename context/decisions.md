@@ -4,6 +4,16 @@
 
 ---
 
+## 2026-05-13 — Tailwind CSS for all styling
+
+**Decision:** All styling uses Tailwind CSS. This applies to both the main marketing site and the Bonus Vault.
+
+**Reasoning:** Grant's standard across all projects. Not a per-project decision.
+
+**Made by:** Grant
+
+---
+
 ## 2026-05-13 — Bonus Vault confirmed as in-scope for Phase 1
 
 **Decision:** The Bonus Vault (`/vault/`) is part of the Phase 1 build, not a Phase 2 addition. David has provided full copy and structure brief.

@@ -70,4 +70,4 @@ Functional requirements beyond a static site: email capture + list integration, 
 
 ## Deferred decisions (resolve before styling sprint)
 
-- **Styling approach:** Tailwind CSS vs. vanilla CSS — decision pending.
+- **Styling approach:** Tailwind CSS — decided.
